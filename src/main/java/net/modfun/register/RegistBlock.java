@@ -1,179 +1,140 @@
-<<<<<<< HEAD
 package net.modfun.register;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemMultiTexture;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.client.model.animation.AnimationTESR;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.modfun.Reference;
 import net.modfun.block.BlockMulti;
-import net.modfun.block.BlockNumbered;
-import net.modfun.block.BlockRandom;
 import net.modfun.tileentity.TileMutli;
 
 
 public class RegistBlock
 {
-    //Contains all registered blocks
-    public static List<Block> BLOCKS;
-    public static List<ItemBlock> ITEM_BLOCKS;
-
-    public static Block blockMulti;
-    public static Block blockRandom;
-    public static Block blockNumbered;
+	  //Using TFICore, basic blocks do not need a block-class on it's own.
+		public static final Block POTATO_BLOCK = new BlockMulti();
 
 
-    private static void init()
-    {
-        BLOCKS = new ArrayList<>();
-        ITEM_BLOCKS = new ArrayList<>();
+	    //Compressed Blocks
+	   
 
-        addBlock(blockMulti = new BlockMulti());
-        addBlock(blockRandom = new BlockRandom());
-        addBlock(blockNumbered = new BlockNumbered(), new ItemMultiTexture(blockNumbered, blockNumbered, BlockNumbered.EnumNumber.names));
-      
-    }
+	    /*  If more data on a block is needed
+	     *  Example 1:
+	     *  public static final Block compressedCobbleWithData = new CompressedBlock(Material.ROCK, MapColor.GRAY, Reference.MOD_ID, "cobble_compr", 2.0f, 10.0f, null).setLightLevel(0.8f);
+	     *  Using Ex1, you can easily add one or two things without having to make an extra class.
+	     *  Example 2:
+	     *  public static final Block compressedCobbleWithData = new CompressedCobbleBlock(Material.ROCK, MapColor.GRAY, Reference.MOD_ID, "cobble_compr", 2.0f, 10.0f, null);
+	     *  Using Ex2, you extend the base class and add your extra data in the constructor of that class.
+	     */
 
-    private static void addBlock(Block block)
-    {
-        addBlock(block, (ItemBlock) new ItemBlock(block).setRegistryName(block.getRegistryName()));
-    }
+		public static void init() {
+			registerBlock(POTATO_BLOCK);
+	        
 
-    private static void addBlock(Block block, ItemBlock itemBlock)
-    {
-        BLOCKS.add(block);
-        ITEM_BLOCKS.add(itemBlock);
-    }
+	        
+	        
+	    }
+		
+		public static void renderInit() {
+	       
+		}
 
-    private static void regTE(Class<? extends TileEntity> teClass, Block block)
-    {
-        GameRegistry.registerTileEntity(teClass, block.getRegistryName().getResourcePath());
-    }
+	    public static void registerTileEntity() {
+	        GameRegistry.registerTileEntity(TileMutli.class, "compressor");
+	        
+	    }
 
-    private static <T extends TileEntity> void regTESR(Class<T> teClass, TileEntitySpecialRenderer<? super T> tesr)
-    {
-        ClientRegistry.bindTileEntitySpecialRenderer(teClass, tesr);
-    }
+	    private static void registerItemBlockRenderer(Item block, String name) {
+	        ModelLoader.setCustomModelResourceLocation(block, 0, new ModelResourceLocation(new ResourceLocation(Reference.MOD_ID, name), "inventory"));
+	        
+	    }
 
-    public static void regTileEntities()
-    {
-        regTE(TileMutli.class, blockMulti);
-        
-    }
+	    private static void registerBuiltIn(Block block) {
+	        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getModelManager().getBlockModelShapes().registerBuiltInBlocks(block);
+	    }
 
-   
-    public static ItemBlock[] getItemBlocks()
-    {
-        if(ITEM_BLOCKS == null) init();
-        return ITEM_BLOCKS.toArray(new ItemBlock[ITEM_BLOCKS.size()]);
-    }
+	    public static void registerBlock(Block block) {
+	        BlockRegistrationHandler.blocks.add(block);
+	    }
 
-    public static Block[] getBlocks()
-    {
-        if(BLOCKS == null) init();
-        return BLOCKS.toArray(new Block[BLOCKS.size()]);
-    }
-   
+	    public static void registerBlock(Block block, ItemBlock itemBlock) {
+	        ForgeRegistries.BLOCKS.register(block);
+	        itemBlock.setRegistryName(block.getRegistryName());
+	        ForgeRegistries.ITEMS.register(itemBlock);
+	    }
 
-    public static void voidLists()
-    {
-        BLOCKS = null;
-        ITEM_BLOCKS = null;
-    }
-}
-=======
-package net.modfun.register;
+	    @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
+	    public static class BlockRegistrationHandler {
+	        public static final Set<Block> BLOCK_LIST = new HashSet<>();
+	        public static final Set<Item> ITEM_LIST = new HashSet<>();
 
-import java.util.ArrayList;
-import java.util.List;
+	        private static final Set<Block> registeredBlockList = new HashSet<>();
+	        public static final List<Block> blocks = new ArrayList<>();
 
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemMultiTexture;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.client.model.animation.AnimationTESR;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.modfun.block.BlockMulti;
-import net.modfun.block.BlockNumbered;
-import net.modfun.block.BlockRandom;
-import net.modfun.tileentity.TileMutli;
+	        @SubscribeEvent
+	        public static void registerBlocks(final RegistryEvent.Register<Block> event) {
+	            final IForgeRegistry<Block> reg = event.getRegistry();
 
+	            for (final Block block : blocks) {
+	                reg.register(block);
+	                BLOCK_LIST.add(block);
+	            }
+	        }
 
-public class RegistBlock
-{
-    //Contains all registered blocks
-    public static List<Block> BLOCKS;
-    public static List<ItemBlock> ITEM_BLOCKS;
+	        @SubscribeEvent
+	        public static void registerItems(final RegistryEvent.Register<Item> event) {
+	            final IForgeRegistry<Item> reg = event.getRegistry();
 
-    public static Block blockMulti;
-    public static Block blockRandom;
-    public static Block blockNumbered;
+	            for (final Block item : blocks) {
+	                ItemBlock itemBlock = (ItemBlock) new ItemBlock(item).setRegistryName(item.getRegistryName());
+	                
+	                reg.register(itemBlock);
+	                ITEM_LIST.add(itemBlock);
+	            }
+	        }
 
+	        @SubscribeEvent
+	        public static void registerModels(final ModelRegistryEvent event) {
+	            for (Block block : BLOCK_LIST)
+	                if (!registeredBlockList.contains(block))
+	                    registerBlockModel(block);
 
-    private static void init()
-    {
-        BLOCKS = new ArrayList<>();
-        ITEM_BLOCKS = new ArrayList<>();
+	            
+	            }
 
-        addBlock(blockMulti = new BlockMulti());
-        addBlock(blockRandom = new BlockRandom());
-        addBlock(blockNumbered = new BlockNumbered(), new ItemMultiTexture(blockNumbered, blockNumbered, BlockNumbered.EnumNumber.names));
-      
-    }
+	            
+	        }
 
-    private static void addBlock(Block block)
-    {
-        addBlock(block, (ItemBlock) new ItemBlock(block).setRegistryName(block.getRegistryName()));
-    }
+	        private static void registerBlockModel(final Block block) {
+	            final String registryName = block.getRegistryName().toString();
+	            final ModelResourceLocation location = new ModelResourceLocation(registryName, "inventory");
+	            registerBlockModel(block, location);
+	        }
 
-    private static void addBlock(Block block, ItemBlock itemBlock)
-    {
-        BLOCKS.add(block);
-        ITEM_BLOCKS.add(itemBlock);
-    }
+	        private static void registerBlockModel(final Block block, final ModelResourceLocation modelResourceLocation) {
+	            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, modelResourceLocation);
+	           
+	        }
 
-    private static void regTE(Class<? extends TileEntity> teClass, Block block)
-    {
-        GameRegistry.registerTileEntity(teClass, block.getRegistryName().getResourcePath());
-    }
+	        public static void registerBlockModelVariants(Block block, int meta, String filename) {
+	            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, new ModelResourceLocation(new ResourceLocation(Reference.MOD_ID, filename), "inventory"));
+	        }
+	    }
 
-    private static <T extends TileEntity> void regTESR(Class<T> teClass, TileEntitySpecialRenderer<? super T> tesr)
-    {
-        ClientRegistry.bindTileEntitySpecialRenderer(teClass, tesr);
-    }
-
-    public static void regTileEntities()
-    {
-        regTE(TileMutli.class, blockMulti);
-        
-    }
-
-   
-    public static ItemBlock[] getItemBlocks()
-    {
-        if(ITEM_BLOCKS == null) init();
-        return ITEM_BLOCKS.toArray(new ItemBlock[ITEM_BLOCKS.size()]);
-    }
-
-    public static Block[] getBlocks()
-    {
-        if(BLOCKS == null) init();
-        return BLOCKS.toArray(new Block[BLOCKS.size()]);
-    }
-   
-
-    public static void voidLists()
-    {
-        BLOCKS = null;
-        ITEM_BLOCKS = null;
-    }
-}
->>>>>>> 50f63d79c60a0648d97b62332b3b90395e396f0e
