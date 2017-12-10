@@ -1,0 +1,9 @@
+package net.modfun.tileentity;
+
+public class TileMulti {
+
+	public TileMulti() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

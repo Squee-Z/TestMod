@@ -1,0 +1,9 @@
+package net.modfun.block;
+
+public class BlockCompress {
+
+	public BlockCompress() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

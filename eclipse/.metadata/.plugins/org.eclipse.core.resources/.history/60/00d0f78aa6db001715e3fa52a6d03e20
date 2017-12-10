@@ -1,0 +1,18 @@
+package net.modfun.block;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.modfun.ExampleMod;
+import net.modfun.Reference;
+
+public class BlockContainer extends Block {
+
+	public BlockContainer(Material materialIn) {
+		super(materialIn);
+		setCreativeTab(ExampleMod.modTab);
+		setRegistryName("Coal Compressor");
+		setUnlocalizedName(Reference.MOD_ID+":"+"coal_comperssor");
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,12 @@
+package net.modfun.item;
+
+import net.minecraft.item.Item;
+
+public class ItemCopperIngot extends Item {
+
+	public ItemCopperIngot() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+}

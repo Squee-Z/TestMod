@@ -1,0 +1,9 @@
+package net.modfun.tileentity;
+
+public class TileEntityCounter {
+
+	public TileEntityCounter() {
+		
+	}
+
+}

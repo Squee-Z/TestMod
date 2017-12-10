@@ -1,0 +1,10 @@
+package net.modfun.tileentity;
+
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+
+public class TileEntityCounter extends TileEntity {
+
+	
+
+}

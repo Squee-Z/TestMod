@@ -1,0 +1,9 @@
+package net.modfun.block;
+
+public class BlockRandom {
+
+	public BlockRandom() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

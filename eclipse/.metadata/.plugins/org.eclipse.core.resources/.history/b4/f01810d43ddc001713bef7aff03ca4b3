@@ -1,0 +1,9 @@
+package net.modfun.block;
+
+public class BlockBase {
+
+	public BlockBase() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

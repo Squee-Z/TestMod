@@ -1,0 +1,12 @@
+package net.modfun.item;
+
+import net.minecraft.item.Item;
+
+public class ItemCopperWrench extends Item {
+
+	public ItemCopperWrench() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+}

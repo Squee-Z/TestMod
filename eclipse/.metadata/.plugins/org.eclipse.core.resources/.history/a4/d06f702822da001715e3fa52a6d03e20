@@ -1,0 +1,23 @@
+package net.modfun.item;
+
+import net.minecraft.item.Item;
+import net.modfun.Reference;
+
+public class ModItems {
+	public static Item Copper;
+
+    static
+    {
+        Copper = new ItemCopperIngot(Reference.MOD_ID+":"+"Copper");
+    }
+
+    public static void register()
+    {
+        register(Copper);
+    }
+
+    private static void register(Item item)
+    {
+        RegistrationHandler.Items.add(item);
+    }
+}

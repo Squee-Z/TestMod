@@ -1,0 +1,17 @@
+package net.modfun.item;
+
+import net.minecraft.item.Item;
+import net.modfun.ExampleMod;
+import net.modfun.Reference;
+
+public class ItemCopperIngot extends Item {
+
+	public ItemCopperIngot() {
+		super();
+		setCreativeTab(ExampleMod.modTab);
+		setUnlocalizedName(Reference.MOD_ID+":"+"Copper");
+		setRegistryName("Copper");
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,9 @@
+package net.modfun.block;
+
+public class BlockTileEntity {
+
+	public BlockTileEntity() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

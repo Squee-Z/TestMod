@@ -1,0 +1,37 @@
+package net.modfun.item;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.modfun.Reference;
+
+public class RegistrationHandler {
+	@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
+    public static class Items
+    {
+        private static final List<Item> ITEMS = new LinkedList<>();
+        
+        static void add(Item item)
+        {
+            ITEMS.add(item);
+        }
+
+        @SubscribeEvent
+        public static void register(final RegistryEvent.Register<Item> event)
+        {
+            
+            ITEMS.forEach(item -> event.getRegistry().register(item));
+        }
+        public static void regItemModels(Item...items){
+            for(Item item : items){
+                ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+            }
+        }
+    }
+}

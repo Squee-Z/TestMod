@@ -1,0 +1,7 @@
+package net.modfun.item;
+
+import net.minecraft.item.Item;
+
+public class ItemCopperWrench extends Item {
+
+}

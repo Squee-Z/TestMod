@@ -1,0 +1,9 @@
+package net.modfun.block;
+
+public class BlockCounter {
+
+	public BlockCounter() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

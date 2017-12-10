@@ -1,0 +1,9 @@
+package net.modfun.tileentity;
+
+public class TMWithNBT {
+
+	public TMWithNBT() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

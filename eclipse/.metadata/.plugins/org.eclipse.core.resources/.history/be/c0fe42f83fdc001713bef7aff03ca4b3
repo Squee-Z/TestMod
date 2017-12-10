@@ -1,0 +1,9 @@
+package net.modfun.register;
+
+public class ModBlocks {
+
+	public ModBlocks() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

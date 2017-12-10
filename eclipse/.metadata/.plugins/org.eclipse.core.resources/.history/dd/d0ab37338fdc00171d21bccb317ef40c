@@ -1,0 +1,16 @@
+package net.modfun.item;
+
+import net.minecraft.item.Item;
+import net.modfun.ExampleMod;
+import net.modfun.Reference;
+
+public class ItemTransposer extends Item {
+
+	public ItemTransposer() {
+		// TODO Auto-generated constructor stub
+		setCreativeTab(ExampleMod.modTab);
+		setRegistryName("Transposer");
+		setUnlocalizedName(Reference.MOD_ID+":transposer");
+	}
+
+}

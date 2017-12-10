@@ -1,0 +1,9 @@
+package net.modfun.tileentity;
+
+public class TIleEntityCounter {
+
+	public TIleEntityCounter() {
+		
+	}
+
+}

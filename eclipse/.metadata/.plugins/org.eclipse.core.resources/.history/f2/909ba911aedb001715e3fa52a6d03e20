@@ -1,0 +1,5 @@
+package net.modfun.helper;
+
+public class TileEntityHelper {
+
+}

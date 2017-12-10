@@ -1,0 +1,16 @@
+[
+{
+  "modid": "modfun",
+  "name": "§1Ur mod (not)",
+  "description": "§b§lThis is something..... I guess",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["§6§lSquee_Z"],
+  "credits": "Hi",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

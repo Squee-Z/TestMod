@@ -1,0 +1,16 @@
+package net.modfun.item;
+
+import net.minecraft.item.Item;
+import net.modfun.ExampleMod;
+
+public class ItemCopperIngot extends Item {
+
+	public ItemCopperIngot(String unlocalname, String registname) {
+		super();
+		setCreativeTab(ExampleMod.modTab);
+		setUnlocalizedName(unlocalname);
+		setRegistryName(registname);
+		// TODO Auto-generated constructor stub
+	}
+
+}

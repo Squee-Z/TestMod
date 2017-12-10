@@ -1,0 +1,9 @@
+package net.modfun.register;
+
+public class RestHandler {
+
+	public RestHandler() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

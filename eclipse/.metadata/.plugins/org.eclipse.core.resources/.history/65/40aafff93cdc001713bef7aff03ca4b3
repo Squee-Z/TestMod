@@ -1,0 +1,9 @@
+package net.modfun.helper;
+
+public class RegistrationHandler {
+
+	public RegistrationHandler() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

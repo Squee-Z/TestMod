@@ -1,0 +1,9 @@
+package net.modfun.register;
+
+public class RegistRecipe {
+
+	public RegistRecipe() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

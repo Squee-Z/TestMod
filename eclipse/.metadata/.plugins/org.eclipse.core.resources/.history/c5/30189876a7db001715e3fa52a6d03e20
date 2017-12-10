@@ -1,0 +1,55 @@
+package net.modfun.block;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.registries.IForgeRegistry;
+
+public class BlockRegistry {
+	public static Map<String, Block> BLOCKS = new HashMap<String, Block>();
+
+    public static final Block container = new BlockContainer(Material.WOOD);
+    
+    
+
+    public static final ItemBlock ibcontainer = (ItemBlock) new ItemBlock(container).setRegistryName(container.getRegistryName());
+    
+    /**
+     * Register all the items into the event handler before the pre-init
+     * @param event
+     */
+
+    
+
+    @SubscribeEvent
+    public static void registerBlocks(RegistryEvent.Register<Block> event){
+        IForgeRegistry<Block> registry = event.getRegistry();
+        registry.register(container);
+        
+        regBlockModels(container);
+    }
+
+    /**
+     * Render the models for the items
+     * @param items
+     */
+   
+
+    public static void regBlockModels(Block...blocks){
+        /*for(int i = 0; i < BlockRunicOre.EnumMagicRuneOres.values().length; i++){
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), i, new ModelResourceLocation(block.getRegistryName()+"$"+ BlockRunicOre.EnumMagicRuneOres.values()[i].getName(), "inventory"));
+        }*/
+
+        for(Block block : blocks){
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+        }
+    }
+}

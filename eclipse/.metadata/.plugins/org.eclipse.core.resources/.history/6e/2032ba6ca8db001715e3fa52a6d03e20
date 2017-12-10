@@ -1,0 +1,5 @@
+package net.modfun.gui;
+
+public class GuiContain extends GuiContainer {
+​	
+}

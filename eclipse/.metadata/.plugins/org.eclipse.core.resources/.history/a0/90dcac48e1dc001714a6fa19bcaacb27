@@ -1,0 +1,9 @@
+package net.modfun.block;
+
+public class BlockMulti {
+
+	public BlockMulti() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,31 @@
+package net.modfun.item;
+
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
+import net.modfun.Reference;
+
+public class ModItems {
+	public static Item Copper;
+
+    static
+    {
+        Copper = new ItemCopperIngot();
+    }
+
+    public static void register()
+    {
+        register(Copper);
+    }
+    
+    private static void register(Item item)
+    {
+        RegistrationHandler.Items.add(item);
+        regItemModels(item);
+    }
+    public static void regItemModels(Item...items){
+        for(Item item : items){
+            ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+        }
+    }
+}

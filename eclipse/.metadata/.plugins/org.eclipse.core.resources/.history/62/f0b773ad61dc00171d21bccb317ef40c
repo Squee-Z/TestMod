@@ -1,0 +1,9 @@
+package net.modfun.block;
+
+public class TMBlock {
+
+	public TMBlock() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
