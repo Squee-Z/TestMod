@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 item.modfun:copper_wrench.name=Copper Wrench
 item.modfun:copper.name=Copper Ingot
+=======
+item.modfun:copper_wrench.name=Copper Wrench
+item.modfun:copper.name=Copper Ingot
+>>>>>>> 50f63d79c60a0648d97b62332b3b90395e396f0e
 itemGroup.mobTab=Mod Fun Tab
