@@ -1,0 +1,14 @@
+<<<<<<< HEAD
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "modfun:item/ingot_copper"
+    }
+=======
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "modfun:item/ingot_copper"
+    }
+>>>>>>> 50f63d79c60a0648d97b62332b3b90395e396f0e
+}
