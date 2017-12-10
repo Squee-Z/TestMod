@@ -6,6 +6,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.modfun.ExampleMod;
 import net.modfun.register.RegistBlock;
 import net.modfun.register.RestHandler;
@@ -22,6 +23,7 @@ public class CommonProxy {
 	}
 	public void init(FMLInitializationEvent event)
 	{
+		 
 		RegistBlock.init();
 		RegistBlock.registerTileEntity();
 		RegistBlock.renderInit();

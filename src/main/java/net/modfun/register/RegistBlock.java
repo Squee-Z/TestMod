@@ -112,11 +112,12 @@ public class RegistBlock
 
 	        @SubscribeEvent
 	        public static void registerModels(final ModelRegistryEvent event) {
-	            for (Block block : BLOCK_LIST)
-	                if (!registeredBlockList.contains(block))
+	            for (Block block : BLOCK_LIST) {
+	                if (!registeredBlockList.contains(block)) {
 	                    registerBlockModel(block);
 
-	            
+	            }
+	                }
 	            }
 
 	            
@@ -135,6 +136,11 @@ public class RegistBlock
 
 	        public static void registerBlockModelVariants(Block block, int meta, String filename) {
 	            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, new ModelResourceLocation(new ResourceLocation(Reference.MOD_ID, filename), "inventory"));
+	        }
+	        @SubscribeEvent
+	        public void registerBlocks(RegistryEvent.Register<Block> event) {
+	            event.getRegistry().register(POTATO_BLOCK);
+	            
 	        }
 	    }
 
